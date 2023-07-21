@@ -1,6 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import Button from "./Button";
+import Visualizer from "./Visualizer";
 import "../CSS/Footer.css";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
@@ -15,7 +16,6 @@ const Footer = () => {
             sm={2}
             className="d-flex align-items-center justify-content-center"
           >
-            {" "}
             <Button></Button>
           </Col>
           <Col sm={4}></Col>
@@ -23,7 +23,7 @@ const Footer = () => {
             sm={6}
             className="d-flex align-items-center justify-content-evenly"
           >
-            <Button></Button>
+            <Button onClickFunction={Visualizer.setArray}></Button>
             <Button></Button>
             <Button></Button>
             <Button></Button>

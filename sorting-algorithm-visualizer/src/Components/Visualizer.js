@@ -20,7 +20,7 @@ class Visualizer extends React.Component {
     //Variables declared by let are only available inside the block where they're defined.
     //Variables declared by var are available throughout the function in which they're declared
     for (let i = 0; i < 100; i++) {
-      newArray.push(this.getRandomInt(5, 299));
+      newArray.push(this.getRandomInt(5, 500));
     }
     this.setState({ array: newArray });
   }
@@ -39,7 +39,7 @@ class Visualizer extends React.Component {
           <div
             key={index}
             className="array-bar"
-            style={{ height: "${value}px" }}
+            style={{ height: `${value}px` }}
           />
         ))}
       </div>

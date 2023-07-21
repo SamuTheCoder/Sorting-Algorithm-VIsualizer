@@ -1,13 +1,16 @@
 .visualizer{
     display: flex;
-    align-items: baseline;
+    align-items: flex-end;
     justify-content: center;
-    height: 300px;
+    height: 50vh;
     margin-inline: 50px;
+    margin: 0;
+    padding: 0;
 }
 
 .array-bar{
     width:3px;
     background-color: #000000;
     margin: 0 2px;
+    padding: 0;
 }
