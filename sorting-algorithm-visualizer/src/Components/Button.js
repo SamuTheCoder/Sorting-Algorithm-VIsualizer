@@ -4,7 +4,7 @@ import '../CSS/Button.css';
 const Button = () => {
     return (
         <button classname="styled-button">
-            Click Me
+            Selection Sort
         </button>
     );
 }

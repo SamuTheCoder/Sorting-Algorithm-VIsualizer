@@ -1,0 +1,13 @@
+.visualizer{
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    height: 300px;
+    margin-inline: 50px;
+}
+
+.array-bar{
+    width:3px;
+    background-color: #000000;
+    margin: 0 2px;
+}
