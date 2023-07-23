@@ -1,13 +1,13 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import Button from "./Button";
-import Visualizer from "./Visualizer";
+import { genArray } from "./Visualizer";
 import "../CSS/Footer.css";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
-const Footer = () => {
+const Footer = ({ setArray }) => {
   return (
     <footer className="footer">
       <Container>
@@ -16,14 +16,18 @@ const Footer = () => {
             sm={2}
             className="d-flex align-items-center justify-content-center"
           >
-            <Button></Button>
+            <Button
+              onClickFunction={() => {
+                setArray(genArray());
+              }}
+            ></Button>
           </Col>
           <Col sm={4}></Col>
           <Col
             sm={6}
             className="d-flex align-items-center justify-content-evenly"
           >
-            <Button onClickFunction={Visualizer.setArray}></Button>
+            <Button></Button>
             <Button></Button>
             <Button></Button>
             <Button></Button>

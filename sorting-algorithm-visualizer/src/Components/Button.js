@@ -3,8 +3,8 @@ import "../CSS/Button.css";
 
 const Button = ({ onClickFunction }) => {
   return (
-    <button classname="styled-button" onClick={onClickFunction}>
-      Selection Sort
+    <button className="styled-button" onClick={onClickFunction}>
+      BUTTON
     </button>
   );
 };
