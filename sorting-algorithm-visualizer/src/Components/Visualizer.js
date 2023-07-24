@@ -1,13 +1,10 @@
-import React, {
-  forwardRef,
-  useEffect,
-  useImperativeHandle,
-  useState,
-} from "react";
+import React, { useEffect } from "react";
 import "../CSS/Visualizer.css";
 
 const Visualizer = ({ array }) => {
-  console.log(array);
+  useEffect(() => {
+    console.log("use effect");
+  });
   return (
     <div className="visualizer">
       {array.map((value, index) => (
@@ -40,19 +37,25 @@ const getRandomInt = (min, max) => {
 };
 
 export const bubbleSort = (arr) => {
+  console.log("HELOOOOOOOOOO");
+  console.log(arr);
   let temp = 0;
   for (let i = 0; i < arr.length; i++) {
     for (let j = 1; j < arr.length; j++) {
-      if (arr[j - 1] > arr[i]) {
-        temp = arr[j - 1];
-        arr[j - 1] = arr[i];
-        arr[i] = temp;
+      if (arr[j - 1] > arr[j]) {
+        //if before > after
+        temp = arr[j - 1]; //before element
+        arr[j - 1] = arr[j]; //before element = after element
+        arr[j] = temp; //after element = before element
       }
     }
   }
+  console.log(arr);
   return arr;
 };
 export const insertionSort = (arr) => {
+  console.log("HELOOOOOOOOOO 2");
+
   for (let i = 1; i < arr.length; i++) {
     let key = arr[i];
     let j = i - 1;
@@ -65,6 +68,8 @@ export const insertionSort = (arr) => {
   return arr;
 };
 export const selectionSort = (arr) => {
+  console.log("HELOOOOOOOOOO 3");
+
   for (let i = 0; i < arr.length; i++) {
     let minptr = i;
     for (let j = i + 1; j < arr.length; i++) {
@@ -78,6 +83,23 @@ export const selectionSort = (arr) => {
   }
   return arr;
 };
-export const quickSort = (arr) => {};
+export function quickSort(array) {
+  console.log("HELOOOOOOOOOO 4");
+
+  if (array.length <= 1) {
+    return array;
+  }
+
+  var pivot = array[0];
+
+  var left = [];
+  var right = [];
+
+  for (var i = 1; i < array.length; i++) {
+    array[i] < pivot ? left.push(array[i]) : right.push(array[i]);
+  }
+
+  return quickSort(left).concat(pivot, quickSort(right));
+}
 
 export default Visualizer;

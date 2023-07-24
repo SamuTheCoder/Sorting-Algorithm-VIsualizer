@@ -24,7 +24,7 @@ function App() {
           <Visualizer className="align-self-end" array={array}></Visualizer>
         </Container>
       </div>
-      <Footer setArray={setArray}></Footer>
+      <Footer setArray={setArray} array={array}></Footer>
     </div>
   );
 }

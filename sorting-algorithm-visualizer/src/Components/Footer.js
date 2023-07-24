@@ -1,13 +1,19 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import Button from "./Button";
-import { genArray } from "./Visualizer";
+import {
+  genArray,
+  bubbleSort,
+  insertionSort,
+  quickSort,
+  selectionSort,
+} from "./Visualizer";
 import "../CSS/Footer.css";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
-const Footer = ({ setArray }) => {
+const Footer = ({ setArray, array }) => {
   return (
     <footer className="footer">
       <Container>
@@ -27,10 +33,28 @@ const Footer = ({ setArray }) => {
             sm={6}
             className="d-flex align-items-center justify-content-evenly"
           >
-            <Button></Button>
-            <Button></Button>
-            <Button></Button>
-            <Button></Button>
+            <Button
+              onClickFunction={() => {
+                console.log(array);
+                const sortedArray = bubbleSort([...array]); //spread operator, creates copy of array
+                setArray(sortedArray);
+              }}
+            ></Button>
+            <Button
+              onClickFunction={() => {
+                insertionSort(array);
+              }}
+            ></Button>
+            <Button
+              onClickFunction={() => {
+                selectionSort(array);
+              }}
+            ></Button>
+            <Button
+              onClickFunction={() => {
+                quickSort(array);
+              }}
+            ></Button>
           </Col>
         </Row>
       </Container>
