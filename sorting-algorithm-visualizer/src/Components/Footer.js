@@ -36,17 +36,12 @@ const Footer = ({ setArray, array, swappingIndexes, setIndexes }) => {
             <Button
               onClickFunction={() => {
                 console.log(array);
-                bubbleSort(
-                  setArray,
-                  [...array],
-                  [...swappingIndexes],
-                  setIndexes
-                ); //spread operator, creates copy of array
+                bubbleSort(setArray, [...array], setIndexes); //spread operator, creates copy of array
               }}
             ></Button>
             <Button
               onClickFunction={() => {
-                insertionSort(array);
+                insertionSort(setArray, [...array], setIndexes);
               }}
             ></Button>
             <Button

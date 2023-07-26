@@ -4,6 +4,7 @@ import "../CSS/Visualizer.css";
 const Visualizer = ({ setArray, array, swappingIndexes, setIndexes }) => {
   useEffect(() => {
     console.log("use effect");
+    console.log(swappingIndexes);
   });
   return (
     <div className="visualizer">
@@ -39,9 +40,8 @@ const getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-export async function bubbleSort(setArray, arr, swappingIndexes, setIndexes) {
+export async function bubbleSort(setArray, arr, setIndexes) {
   console.log("HELOOOOOOOOOO");
-  console.log(swappingIndexes);
   let temp = 0;
   for (let i = 0; i < arr.length; i++) {
     for (let j = 1; j < arr.length; j++) {
@@ -52,28 +52,52 @@ export async function bubbleSort(setArray, arr, swappingIndexes, setIndexes) {
         arr[j] = temp; //after element = before element
 
         setIndexes([j - 1, j]);
-        console.log(swappingIndexes);
         await new Promise((resolve) => setTimeout(resolve, 50));
         setArray([...arr]);
       }
     }
   }
+
+  let auxArray = [];
+  for (let i = 0; i < arr.length; i++) {
+    auxArray.push(i, i + 1);
+    setIndexes([...auxArray]);
+    await new Promise((resolve) => setTimeout(resolve, 25));
+  }
+
+  setIndexes([]);
   return arr;
 }
-export const insertionSort = (arr) => {
+export async function insertionSort(setArray, arr, setIndexes) {
   console.log("HELOOOOOOOOOO 2");
 
-  for (let i = 1; i < arr.length; i++) {
-    let key = arr[i];
-    let j = i - 1;
-    while (j >= 0 && arr[j] > key) {
-      arr[j + 1] = arr[j];
+  for (let i = 1; i < arr.length + 1; i++) {
+    let j = i - 1; //left element
+    let temp = 0;
+    while (j > 0 && arr[j] < arr[j - 1]) {
+      //if left > right
+      temp = arr[j];
+      arr[j] = arr[j - 1];
+      arr[j - 1] = temp;
+
       j = j - 1;
+
+      setIndexes([j - 1, j]);
+      await new Promise((resolve) => setTimeout(resolve, 50));
+      setArray([...arr]);
     }
-    arr[j + 1] = key;
   }
+
+  let auxArray = [];
+  for (let i = 0; i < arr.length; i++) {
+    auxArray.push(i, i + 1);
+    setIndexes([...auxArray]);
+    await new Promise((resolve) => setTimeout(resolve, 25));
+  }
+
+  setIndexes([]);
   return arr;
-};
+}
 export const selectionSort = (arr) => {
   console.log("HELOOOOOOOOOO 3");
 
