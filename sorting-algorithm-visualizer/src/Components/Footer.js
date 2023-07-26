@@ -13,7 +13,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
-const Footer = ({ setArray, array }) => {
+const Footer = ({ setArray, array, swappingIndexes, setIndexes }) => {
   return (
     <footer className="footer">
       <Container>
@@ -36,8 +36,12 @@ const Footer = ({ setArray, array }) => {
             <Button
               onClickFunction={() => {
                 console.log(array);
-                const sortedArray = bubbleSort([...array]); //spread operator, creates copy of array
-                setArray(sortedArray);
+                bubbleSort(
+                  setArray,
+                  [...array],
+                  [...swappingIndexes],
+                  setIndexes
+                ); //spread operator, creates copy of array
               }}
             ></Button>
             <Button

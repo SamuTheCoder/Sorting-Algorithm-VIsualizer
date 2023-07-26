@@ -15,16 +15,28 @@ import { useRef, useState } from "react";
 
 function App() {
   const [array, setArray] = useState(genArray());
+  const [swappingIndexes, setIndexes] = useState([]);
 
   return (
     <div className="app-wrapper">
       <Header></Header>
       <div className="content-wrapper">
         <Container className="align-self-end">
-          <Visualizer className="align-self-end" array={array}></Visualizer>
+          <Visualizer
+            className="align-self-end"
+            setArray={setArray}
+            array={array}
+            swappingIndexes={swappingIndexes}
+            setIndexes={setIndexes}
+          ></Visualizer>
         </Container>
       </div>
-      <Footer setArray={setArray} array={array}></Footer>
+      <Footer
+        setArray={setArray}
+        array={array}
+        swappingIndexes={swappingIndexes}
+        setIndexes={setIndexes}
+      ></Footer>
     </div>
   );
 }

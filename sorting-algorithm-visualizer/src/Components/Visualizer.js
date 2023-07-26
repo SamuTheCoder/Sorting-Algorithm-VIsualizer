@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../CSS/Visualizer.css";
 
-const Visualizer = ({ array }) => {
+const Visualizer = ({ setArray, array, swappingIndexes, setIndexes }) => {
   useEffect(() => {
     console.log("use effect");
   });
@@ -11,7 +11,10 @@ const Visualizer = ({ array }) => {
         <div
           key={index}
           className="array-bar"
-          style={{ height: `${value}px` }}
+          style={{
+            height: `${value}px`,
+            backgroundColor: swappingIndexes.includes(index) ? "red" : "black",
+          }}
         />
       ))}
     </div>
@@ -22,7 +25,7 @@ export const genArray = () => {
   const newArray = [];
   //Variables declared by let are only available inside the block where they're defined.
   //Variables declared by var are available throughout the function in which they're declared
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 20; i++) {
     newArray.push(getRandomInt(5, 500));
   }
   return newArray;
@@ -36,9 +39,9 @@ const getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-export const bubbleSort = (arr) => {
+export async function bubbleSort(setArray, arr, swappingIndexes, setIndexes) {
   console.log("HELOOOOOOOOOO");
-  console.log(arr);
+  console.log(swappingIndexes);
   let temp = 0;
   for (let i = 0; i < arr.length; i++) {
     for (let j = 1; j < arr.length; j++) {
@@ -47,12 +50,16 @@ export const bubbleSort = (arr) => {
         temp = arr[j - 1]; //before element
         arr[j - 1] = arr[j]; //before element = after element
         arr[j] = temp; //after element = before element
+
+        setIndexes([j - 1, j]);
+        console.log(swappingIndexes);
+        await new Promise((resolve) => setTimeout(resolve, 50));
+        setArray([...arr]);
       }
     }
   }
-  console.log(arr);
   return arr;
-};
+}
 export const insertionSort = (arr) => {
   console.log("HELOOOOOOOOOO 2");
 
