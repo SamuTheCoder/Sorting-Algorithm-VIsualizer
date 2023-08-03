@@ -47,25 +47,13 @@ export async function bubbleSort(setArray, arr, setIndexes) {
     for (let j = 1; j < arr.length; j++) {
       if (arr[j - 1] > arr[j]) {
         //if before > after
-        temp = arr[j - 1]; //before element
-        arr[j - 1] = arr[j]; //before element = after element
-        arr[j] = temp; //after element = before element
-
-        setIndexes([j - 1, j]);
+        swap(arr, j - 1, j, setIndexes, setArray);
         await new Promise((resolve) => setTimeout(resolve, 50));
-        setArray([...arr]);
       }
     }
   }
 
-  let auxArray = [];
-  for (let i = 0; i < arr.length; i++) {
-    auxArray.push(i, i + 1);
-    setIndexes([...auxArray]);
-    await new Promise((resolve) => setTimeout(resolve, 25));
-  }
-
-  setIndexes([]);
+  finalAnimation(arr, setIndexes);
   return arr;
 }
 export async function insertionSort(setArray, arr, setIndexes) {
@@ -76,44 +64,36 @@ export async function insertionSort(setArray, arr, setIndexes) {
     let temp = 0;
     while (j > 0 && arr[j] < arr[j - 1]) {
       //if left > right
-      temp = arr[j];
-      arr[j] = arr[j - 1];
-      arr[j - 1] = temp;
+      swap(arr, j, j - 1, setIndexes, setArray);
+      await new Promise((resolve) => setTimeout(resolve, 50));
 
       j = j - 1;
-
-      setIndexes([j - 1, j]);
-      await new Promise((resolve) => setTimeout(resolve, 50));
-      setArray([...arr]);
     }
   }
 
-  let auxArray = [];
-  for (let i = 0; i < arr.length; i++) {
-    auxArray.push(i, i + 1);
-    setIndexes([...auxArray]);
-    await new Promise((resolve) => setTimeout(resolve, 25));
-  }
-
-  setIndexes([]);
+  finalAnimation(arr, setIndexes);
   return arr;
 }
-export const selectionSort = (arr) => {
+export async function selectionSort(setArray, arr, setIndexes) {
   console.log("HELOOOOOOOOOO 3");
 
   for (let i = 0; i < arr.length; i++) {
     let minptr = i;
-    for (let j = i + 1; j < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
       if (arr[minptr] > arr[j]) {
         minptr = j;
       }
     }
-    let temp = arr[i];
-    arr[i] = arr[minptr];
-    arr[minptr] = temp;
+    if (minptr != i) {
+      swap(arr, i, minptr, setIndexes, setArray);
+
+      await new Promise((resolve) => setTimeout(resolve, 50));
+    }
   }
+
+  finalAnimation(arr, setIndexes);
   return arr;
-};
+}
 export function quickSort(array) {
   console.log("HELOOOOOOOOOO 4");
 
@@ -133,4 +113,23 @@ export function quickSort(array) {
   return quickSort(left).concat(pivot, quickSort(right));
 }
 
+export function swap(arr, a, b, setIndexes, setArray) {
+  let temp = arr[a];
+  arr[a] = arr[b];
+  arr[b] = temp;
+
+  setIndexes([a, b]);
+  setArray([...arr]);
+}
+
+export async function finalAnimation(arr, setIndexes) {
+  let auxArray = [];
+  for (let i = 0; i < arr.length; i++) {
+    auxArray.push(i, i + 1);
+    setIndexes([...auxArray]);
+    await new Promise((resolve) => setTimeout(resolve, 25));
+  }
+
+  setIndexes([]);
+}
 export default Visualizer;

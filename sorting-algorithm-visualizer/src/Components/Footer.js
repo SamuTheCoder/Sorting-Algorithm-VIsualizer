@@ -46,7 +46,7 @@ const Footer = ({ setArray, array, swappingIndexes, setIndexes }) => {
             ></Button>
             <Button
               onClickFunction={() => {
-                selectionSort(array);
+                selectionSort(setArray, [...array], setIndexes);
               }}
             ></Button>
             <Button
