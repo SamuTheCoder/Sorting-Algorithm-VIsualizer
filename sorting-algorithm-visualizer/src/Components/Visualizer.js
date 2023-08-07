@@ -4,7 +4,6 @@ import "../CSS/Visualizer.css";
 const Visualizer = ({ setArray, array, swappingIndexes, setIndexes }) => {
   useEffect(() => {
     console.log("use effect");
-    console.log(swappingIndexes);
   });
   return (
     <div className="visualizer">
@@ -14,7 +13,7 @@ const Visualizer = ({ setArray, array, swappingIndexes, setIndexes }) => {
           className="array-bar"
           style={{
             height: `${value}px`,
-            backgroundColor: swappingIndexes.includes(index) ? "red" : "black",
+            backgroundColor: swappingIndexes.includes(index) ? "red" : "white",
           }}
         />
       ))}
@@ -26,7 +25,7 @@ export const genArray = () => {
   const newArray = [];
   //Variables declared by let are only available inside the block where they're defined.
   //Variables declared by var are available throughout the function in which they're declared
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 8; i++) {
     newArray.push(getRandomInt(5, 500));
   }
   return newArray;
@@ -94,23 +93,63 @@ export async function selectionSort(setArray, arr, setIndexes) {
   finalAnimation(arr, setIndexes);
   return arr;
 }
-export function quickSort(array) {
-  console.log("HELOOOOOOOOOO 4");
 
-  if (array.length <= 1) {
-    return array;
+//not implemented
+export async function quickSort(
+  arr,
+  setIndexes,
+  setArray,
+  startIndex,
+  endIndex
+) {
+  console.log("HELLLLLLOOOOOOOOOOOO 4");
+  console.log(arr);
+
+  let workingBranch = arr.slice(startIndex, endIndex + 1);
+  console.log(workingBranch);
+  if (workingBranch.length <= 1) {
+    console.log("ye");
+    return arr;
   }
 
-  var pivot = array[0];
+  var pivot = workingBranch[0];
 
   var left = [];
   var right = [];
 
-  for (var i = 1; i < array.length; i++) {
-    array[i] < pivot ? left.push(array[i]) : right.push(array[i]);
+  for (var i = 1; i < workingBranch.length; i++) {
+    workingBranch[i] < pivot ? left.push(arr[i]) : right.push(arr[i]);
   }
+  console.log(left);
+  console.log(right);
 
-  return quickSort(left).concat(pivot, quickSort(right));
+  workingBranch = left.concat(pivot, right);
+  console.log("after sort" + workingBranch);
+
+  if (arr[0] == workingBranch[0]) {
+    arr = workingBranch.concat(arr.slice(endIndex, arr.length));
+  } else if (arr[arr.length - 1] == workingBranch[workingBranch.length - 1]) {
+    arr = arr.slice(0, startIndex).concat(workingBranch);
+  } else {
+    arr = arr
+      .slice(0, startIndex)
+      .concat(workingBranch, arr.slice(endIndex, arr.length));
+
+    setArray([...arr]);
+  }
+  console.log("concat: " + arr);
+  await new Promise((resolve) => setTimeout(resolve, 50));
+
+  let leftStartIndex = startIndex;
+  let leftEndIndex = startIndex + left.length - 1;
+
+  let rightStartIndex = endIndex;
+  let rightEndIndex = endIndex + right.length - 1;
+  return (
+    quickSort(arr, setIndexes, setArray, leftStartIndex, leftEndIndex) +
+    [pivot] +
+    quickSort(arr, setIndexes, setArray, rightStartIndex, rightEndIndex + 1)
+  );
 }
 
 export function swap(arr, a, b, setIndexes, setArray) {

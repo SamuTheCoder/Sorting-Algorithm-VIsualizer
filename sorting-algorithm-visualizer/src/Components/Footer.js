@@ -51,7 +51,7 @@ const Footer = ({ setArray, array, swappingIndexes, setIndexes }) => {
             ></Button>
             <Button
               onClickFunction={() => {
-                quickSort(array);
+                quickSort([...array], setIndexes, setArray, 0, array.length);
               }}
             ></Button>
           </Col>
