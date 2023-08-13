@@ -27,8 +27,7 @@ const Footer = ({
         <Row>
           <Col sm={2} className="footer-cols">
             <Button
-              variant="danger"
-              style={{ backgroundColor: "red" }}
+              style={{ border: "none" }}
               size="lg"
               onClick={() => {
                 let barHeight = 0.58 * window.innerHeight;
@@ -41,8 +40,7 @@ const Footer = ({
           <Col sm={4}></Col>
           <Col sm={6} className="footer-cols">
             <Button
-              variant="danger"
-              style={{ backgroundColor: "red" }}
+              style={{ border: "none" }}
               onClick={() => {
                 console.log(array);
                 bubbleSort(
@@ -57,8 +55,7 @@ const Footer = ({
               Bubble Sort
             </Button>
             <Button
-              variant="danger"
-              style={{ backgroundColor: "red" }}
+              style={{ border: "none" }}
               onClick={() => {
                 insertionSort(
                   setArray,
@@ -72,8 +69,7 @@ const Footer = ({
               Insertion Sort
             </Button>
             <Button
-              variant="danger"
-              style={{ backgroundColor: "red" }}
+              style={{ border: "none" }}
               onClick={() => {
                 selectionSort(
                   setArray,
@@ -87,8 +83,7 @@ const Footer = ({
               Selection Sort
             </Button>
             <Button
-              variant="danger"
-              style={{ backgroundColor: "red" }}
+              style={{ border: "none" }}
               onClick={() => {
                 quickSort(
                   [...array],

@@ -1,16 +1,6 @@
 .styled-button{
-    background-color: brown;
+    background-color: red;
     border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    height: 2.5rem;
-    font-size: 1rem;
-    text-align: center;
-    font-weight: bold;
-    width: fit-content;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 .styled-button:hover{
     background-color: aqua;

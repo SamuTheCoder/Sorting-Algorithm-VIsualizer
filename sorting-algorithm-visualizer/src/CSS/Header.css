@@ -1,5 +1,5 @@
 .header{
-    background-color: black;
+    background-color: rgb(31, 31, 31);
     width: 100%;
     display: flex;
     align-items: center;
@@ -11,5 +11,5 @@
 .header-message{
     text-align: center;
     font-size: 34px;
-    color: red;
+    color:  	#008B8B;
 }
