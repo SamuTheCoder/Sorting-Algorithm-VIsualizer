@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
-import Button from "./Button";
+import Button from "react-bootstrap/Button";
 import {
   genArray,
   bubbleSort,
@@ -13,47 +13,97 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
-const Footer = ({ setArray, array, swappingIndexes, setIndexes }) => {
+const Footer = ({
+  setArray,
+  array,
+  swappingIndexes,
+  setIndexes,
+  isSorting,
+  setSorting,
+}) => {
   return (
     <footer className="footer">
       <Container>
         <Row>
-          <Col
-            sm={2}
-            className="d-flex align-items-center justify-content-center"
-          >
+          <Col sm={2} className="footer-cols">
             <Button
-              onClickFunction={() => {
-                setArray(genArray());
+              variant="danger"
+              style={{ backgroundColor: "red" }}
+              size="lg"
+              onClick={() => {
+                let barHeight = 0.58 * window.innerHeight;
+                setArray(genArray(barHeight, isSorting, setSorting, array));
               }}
-            ></Button>
+            >
+              Generate Array
+            </Button>
           </Col>
           <Col sm={4}></Col>
-          <Col
-            sm={6}
-            className="d-flex align-items-center justify-content-evenly"
-          >
+          <Col sm={6} className="footer-cols">
             <Button
-              onClickFunction={() => {
+              variant="danger"
+              style={{ backgroundColor: "red" }}
+              onClick={() => {
                 console.log(array);
-                bubbleSort(setArray, [...array], setIndexes); //spread operator, creates copy of array
+                bubbleSort(
+                  setArray,
+                  [...array],
+                  setIndexes,
+                  isSorting,
+                  setSorting
+                ); //spread operator, creates copy of array
               }}
-            ></Button>
+            >
+              Bubble Sort
+            </Button>
             <Button
-              onClickFunction={() => {
-                insertionSort(setArray, [...array], setIndexes);
+              variant="danger"
+              style={{ backgroundColor: "red" }}
+              onClick={() => {
+                insertionSort(
+                  setArray,
+                  [...array],
+                  setIndexes,
+                  isSorting,
+                  setSorting
+                );
               }}
-            ></Button>
+            >
+              Insertion Sort
+            </Button>
             <Button
-              onClickFunction={() => {
-                selectionSort(setArray, [...array], setIndexes);
+              variant="danger"
+              style={{ backgroundColor: "red" }}
+              onClick={() => {
+                selectionSort(
+                  setArray,
+                  [...array],
+                  setIndexes,
+                  isSorting,
+                  setSorting
+                );
               }}
-            ></Button>
+            >
+              Selection Sort
+            </Button>
             <Button
-              onClickFunction={() => {
-                quickSort([...array], setIndexes, setArray, 0, array.length);
+              variant="danger"
+              style={{ backgroundColor: "red" }}
+              onClick={() => {
+                quickSort(
+                  [...array],
+                  setIndexes,
+                  setArray,
+                  0,
+                  array.length,
+                  isSorting,
+                  setSorting
+                );
               }}
-            ></Button>
+              disabled
+            >
+              Not Implemented
+            </Button>
           </Col>
         </Row>
       </Container>

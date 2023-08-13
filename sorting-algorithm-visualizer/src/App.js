@@ -16,6 +16,7 @@ import { useRef, useState } from "react";
 function App() {
   const [array, setArray] = useState(genArray());
   const [swappingIndexes, setIndexes] = useState([]);
+  const [isSorting, setSorting] = useState(false);
 
   return (
     <div className="app-wrapper">
@@ -36,6 +37,8 @@ function App() {
         array={array}
         swappingIndexes={swappingIndexes}
         setIndexes={setIndexes}
+        isSorting={isSorting}
+        setSorting={setSorting}
       ></Footer>
     </div>
   );

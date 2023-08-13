@@ -21,12 +21,15 @@ const Visualizer = ({ setArray, array, swappingIndexes, setIndexes }) => {
   );
 };
 
-export const genArray = () => {
+export const genArray = (maxBarSize, isSorting, setSorting, array) => {
+  if (isSorting == true) {
+    return array;
+  }
   const newArray = [];
   //Variables declared by let are only available inside the block where they're defined.
   //Variables declared by var are available throughout the function in which they're declared
-  for (let i = 0; i < 8; i++) {
-    newArray.push(getRandomInt(5, 500));
+  for (let i = 0; i < 50; i++) {
+    newArray.push(getRandomInt(5, maxBarSize));
   }
   return newArray;
 };
@@ -39,8 +42,18 @@ const getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-export async function bubbleSort(setArray, arr, setIndexes) {
+export async function bubbleSort(
+  setArray,
+  arr,
+  setIndexes,
+  isSorting,
+  setSorting
+) {
   console.log("HELOOOOOOOOOO");
+  if (isSorting == true) {
+    return arr;
+  }
+  setSorting(true);
   let temp = 0;
   for (let i = 0; i < arr.length; i++) {
     for (let j = 1; j < arr.length; j++) {
@@ -53,11 +66,21 @@ export async function bubbleSort(setArray, arr, setIndexes) {
   }
 
   finalAnimation(arr, setIndexes);
+  setSorting(false);
   return arr;
 }
-export async function insertionSort(setArray, arr, setIndexes) {
+export async function insertionSort(
+  setArray,
+  arr,
+  setIndexes,
+  isSorting,
+  setSorting
+) {
   console.log("HELOOOOOOOOOO 2");
-
+  if (isSorting == true) {
+    return arr;
+  }
+  setSorting(true);
   for (let i = 1; i < arr.length + 1; i++) {
     let j = i - 1; //left element
     let temp = 0;
@@ -71,11 +94,22 @@ export async function insertionSort(setArray, arr, setIndexes) {
   }
 
   finalAnimation(arr, setIndexes);
+  setSorting(false);
   return arr;
 }
-export async function selectionSort(setArray, arr, setIndexes) {
+export async function selectionSort(
+  setArray,
+  arr,
+  setIndexes,
+  isSorting,
+  setSorting
+) {
   console.log("HELOOOOOOOOOO 3");
 
+  if (isSorting == true) {
+    return arr;
+  }
+  setSorting(true);
   for (let i = 0; i < arr.length; i++) {
     let minptr = i;
     for (let j = i + 1; j < arr.length; j++) {
@@ -91,6 +125,7 @@ export async function selectionSort(setArray, arr, setIndexes) {
   }
 
   finalAnimation(arr, setIndexes);
+  setSorting(false);
   return arr;
 }
 

@@ -3,9 +3,16 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 10px;
+    height: 2.5rem;
+    font-size: 1rem;
+    text-align: center;
+    font-weight: bold;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
 .styled-button:hover{
     background-color: aqua;
 }
+

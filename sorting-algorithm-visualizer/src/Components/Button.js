@@ -1,10 +1,10 @@
 import React from "react";
 import "../CSS/Button.css";
 
-const Button = ({ onClickFunction }) => {
+const Button = ({ onClickFunction, text }) => {
   return (
     <button className="styled-button" onClick={onClickFunction}>
-      BUTTON
+      {text}
     </button>
   );
 };
